@@ -8,6 +8,7 @@ package quiz.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import quiz.entity.Question;
 import quiz.entity.Quiz;
 
 /**
@@ -31,11 +32,26 @@ public class QuizDAO {
         em.getTransaction().commit();
 
     }
-    
-        public List<Quiz> listerTous(){
-        
-        EntityManager em = Persistence.createEntityManagerFactory("quizPU").createEntityManager(); 
-        
-        return em.createQuery("select s from Quiz s ").getResultList();
+
+    public List<Quiz> listerTous() {
+
+        EntityManager em = Persistence.createEntityManagerFactory("quizPU").createEntityManager();
+
+         return em.createQuery("select s from Quiz s ").getResultList();
+    }
+
+    public void modifier(Quiz quiz) {
+        EntityManager em = Persistence.createEntityManagerFactory("quizPU").createEntityManager();
+        em.getTransaction().begin();
+        em.merge(quiz);
+        em.getTransaction().commit();
+    }
+
+    public void supprimer(long id) {
+        EntityManager em = Persistence.createEntityManagerFactory("quizPU").createEntityManager();
+        em.getTransaction().begin();
+        Quiz q = em.find(Quiz.class, id);
+        em.remove(q);
+        em.getTransaction().commit();
     }
 }

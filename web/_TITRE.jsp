@@ -4,14 +4,15 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-   
         <h1>QUIZ JAVA</h1>
-   
-</html>
+        <a href="liste_quiz">Liste quiz</a>
+        <a href="page_connexion">Connection</a>
+        <a href="demarrerQuiz">demarrer quiz</a>
+        
+        <c:if test="${admin=='admin'}">
+         <a href="ajout_quiz">ajouter quiz</a>
+        <a href="page_deconnexion">deconnection</a>
+       </c:if>
+

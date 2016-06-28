@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,13 +26,25 @@ public class Question implements Serializable {
     private Long id;
     
     private String titre;
-    private int ordre;
+    private long ordre;
     private String reponse1;
     private String reponse2;
     private String reponse3;
     private String reponse4;
     
+    private Integer numRepnseCorrecte;
+    
+    @JoinColumn(name = "quiz_id")
+    @ManyToOne
     private Quiz quiz;
+
+    public Integer getNumRepnseCorrecte() {
+        return numRepnseCorrecte;
+    }
+
+    public void setNumRepnseCorrecte(Integer numRepnseCorrecte) {
+        this.numRepnseCorrecte = numRepnseCorrecte;
+    }
 
     public String getTitre() {
         return titre;
@@ -40,13 +54,23 @@ public class Question implements Serializable {
         this.titre = titre;
     }
 
-    public int getOrdre() {
+    public long getOrdre() {
         return ordre;
     }
 
-    public void setOrdre(int ordre) {
+    public void setOrdre(long ordre) {
         this.ordre = ordre;
     }
+
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
+
+
 
     public String getReponse1() {
         return reponse1;

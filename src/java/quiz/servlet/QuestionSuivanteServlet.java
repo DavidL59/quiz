@@ -17,13 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(name = "servlet", urlPatterns = {"/servlet"})
-public class QuizServlet extends HttpServlet {
+@WebServlet(name = "QuestionSuivanteServlet", urlPatterns = {"/question_suivante"})
+public class QuestionSuivanteServlet extends HttpServlet {
 
-    
-    
-     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       req.getRequestDispatcher("quiz.jsp").forward(req, resp);
-    }
+
+
 }

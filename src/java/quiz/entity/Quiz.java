@@ -6,10 +6,13 @@
 package quiz.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,9 +27,26 @@ public class Quiz implements Serializable {
     private Long id;
     
     
-    private Question question;
+    private String titre;
     
-    
+    @OneToMany(mappedBy = "quiz")
+    private List<Question> questions=new ArrayList<>();
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
 
     public Long getId() {
         return id;

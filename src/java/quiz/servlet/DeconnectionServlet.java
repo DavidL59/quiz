@@ -13,35 +13,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author admin
  */
-@WebServlet(name = "ConnexionServlet", urlPatterns = {"/page_connexion"})
-public class ConnexionServlet extends HttpServlet {
+@WebServlet(name = "DeconnectionServlet", urlPatterns = {"/deconnectionServlet"})
+public class DeconnectionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-              
-     
-//recupere le login et mdp et stocke valeurs dans variables 
-       String login= req.getParameter("login");
-       String mdp = req.getParameter("pwd");
-       
-              
-        if (login.equals("admin") && mdp.equals("admin")) {
-            req.getSession().setAttribute("admin", "admin");
-             resp.sendRedirect("liste_quiz"); // renvoi vers la route de la servlet listerQuizServlet
-        }
-               
+        
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().removeAttribute("utilConnecte");
         
-         req.getRequestDispatcher("pageDeConnexion.jsp").forward(req, resp);
+        resp.sendRedirect("listeQuiz");
     }
 
+  
 
 }
